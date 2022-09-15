@@ -6,6 +6,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const home = require('./src/routes/home.routes');
+const user = require('./src/routes/users.routes');
 const mongoose = require('mongoose');
 const conectarBD = require('./src/db/connection');
 
@@ -18,10 +19,11 @@ conectarBD();
 
 
 //*MIDDLEWARES
-app.use(cors());//PAra admitir peticiones de cualquier lado.
+app.use(cors());//Para admitir peticiones de cualquier lado.
 app.use(morgan('dev'));
-app.use(express.json()); // Para que el servidor comprenda archivos con formato jso
+app.use(express.json()); // Para que el servidor comprenda archivos con formato json
 app.use(home);
+app.use(user);
 
 
 //*Configuraciones

@@ -2,7 +2,7 @@
 const router = require('express').Router();
 
 
-//*Importandoo controladores
+//*Importando controladores
 const {
     getHome,
     postHome,
@@ -10,7 +10,6 @@ const {
     deleteHome,
 
 } = require('../controllers/home.controllers');
-
 
 
 
@@ -24,6 +23,7 @@ router.get('/', getHome);
 
 
 router.post('/', postHome);
+
 
 
 router.put('/', putHome);

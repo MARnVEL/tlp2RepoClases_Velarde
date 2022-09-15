@@ -25,7 +25,7 @@ ctrlUser.getUsers = async (req, res) => {
 
 
 // Controlador para crear nuevo usuario en la Base de Datos.
-ctrlUser.postUser = async (req, res) => {
+ctrlUser.postUsers = async (req, res) => {
     //Cada vez que quiero ingresar documento a la BD voy al controlador.
     // Se obtienen los datos enviados por método POST
     const { username, password, email } = req.body;
@@ -58,19 +58,17 @@ ctrlUser.postUser = async (req, res) => {
             msg: 'No se pudo crear el usuario, vuelva a intentarlo'
         })
     }
-
-
 };
 
 // Controlador para actualizar un usuario, requiere que se envíe ID  de usuario.
-ctrlUser.putUser = async (req, res) => {
+ctrlUser.putUsers = async (req, res) => {
     return res.json({
         msg: ''
     })
 };
 
 // Controlador para eliminar usuario, requiere ID de usuario.
-ctrlUser.deleteUser = async (req, res) => {
+ctrlUser.deleteUsers = async (req, res) => {
     return res.json({
         msg: ''
     })
