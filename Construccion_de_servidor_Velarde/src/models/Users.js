@@ -38,5 +38,5 @@ const UserSchema =  new Schema({
 //Las clases son como plantillas para darle forma a los datos.
 //Para dejar conformado el esquema se importa el model.
 
-module.exports = model('Users', UserSchema);//Model necesita dos parámetros, como se llama la conexión, y como se estructura los datos.
+module.exports = model('Users', UserSchema);//Model necesita dos parámetros, como se llama la conexión, y como se estructuran los datos.
 
