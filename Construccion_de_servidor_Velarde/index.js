@@ -5,9 +5,12 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+
+//*Importaciones de módulos propios del proyecto:
+
 const home = require('./src/routes/home.routes');
 const user = require('./src/routes/users.routes');
-const mongoose = require('mongoose');
 const conectarBD = require('./src/db/connection');
 
 
@@ -18,7 +21,7 @@ conectarBD();
 
 
 
-//*MIDDLEWARES
+//*MIDDELWARES
 app.use(cors());//Para admitir peticiones de cualquier lado.
 app.use(morgan('dev'));
 app.use(express.json()); // Para que el servidor comprenda archivos con formato json
