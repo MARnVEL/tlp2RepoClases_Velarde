@@ -5,7 +5,7 @@
 const { Schema, model } = require('mongoose');
 
 
-const UserSchema =  new Schema({
+const userSchema =  new Schema({
     name: {
         type: String,
     },
@@ -38,5 +38,5 @@ const UserSchema =  new Schema({
 //Las clases son como plantillas para darle forma a los datos.
 //Para dejar conformado el esquema se importa el model.
 
-module.exports = model('Users', UserSchema);//Model necesita dos parámetros, como se llama la conexión, y como se estructuran los datos.
+module.exports = model('Users', userSchema);//Model necesita dos parámetros, como se llama la conexión, y como se estructuran los datos.
 

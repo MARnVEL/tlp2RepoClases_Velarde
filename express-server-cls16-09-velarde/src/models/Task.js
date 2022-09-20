@@ -6,7 +6,7 @@
 const { Schema, model } = require('mongoose');
 
 
-const TaskSchema =  new Schema({
+const taskSchema =  new Schema({
     title: {
         type: String,
         required: true,
@@ -46,6 +46,6 @@ const TaskSchema =  new Schema({
 //Las clases son como plantillas para darle forma a los datos.
 //Para dejar conformado el esquema se importa el model.
 
-module.exports = model('Task', TaskSchema);//Model necesita dos parámetros, como se llama la conexión, 
+module.exports = model('Task', taskSchema);//Model necesita dos parámetros, como se llama la conexión, 
 //y como se estructuran los datos.
 
