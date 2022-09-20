@@ -32,9 +32,9 @@ ctrlTask.postTask = async (req, res) => {
     // const { username, password, email, ...otrosDatos } = req.body;
     //!El ...otrosDatos es para incluir posibles otros datos
 
-    // Se instancia un nuevo documento de MongoDB para luego ser guardado
     try {
         
+        // Se instancia un nuevo documento de MongoDB para luego ser guardado
         const newTask = new Task({
             title,
             description,

@@ -3,15 +3,17 @@
 const {Schema, model} = require('mongoose');
 
 const productSchema = new Schema({
-    name: {
+    commercialName: {
         type: String,
-        required: true
+        required: true,
+        max: 255
     },
+
     description: {
         type: String,
         required: true
     },
-    price: {
+    unitPrice: {
         type: Number,
         required: true
     },
