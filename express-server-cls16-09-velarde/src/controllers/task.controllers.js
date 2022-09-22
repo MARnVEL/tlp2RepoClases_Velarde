@@ -13,8 +13,8 @@ const Task = require('../models/Task');
 ctrlTask.getTask = async (req, res) => {
     try {
         // Se consultan todos los documentos de la base de datos.
-        const task = await Task.find();
-        // Se devuelve al cliente un arreglo con los datos de los usuarios.
+        const task = await Task.find({isActive: true});
+        // !Se devuelve al cliente !UN ARREGLO con los datos de los usuarios.
         return res.json(task)
 
     } catch (err) {
@@ -61,19 +61,45 @@ ctrlTask.postTask = async (req, res) => {
 
 // Controlador para actualizar un usuario, requiere que se envíe ID  de usuario.
 ctrlTask.putTask = async (req, res) => {
+
+    /*
+    Cuando quiero editar tengo que pensar primero qué tengo que editar.
+    No todos los datos se pueden editar.
+
+    */
     // const newTask = new Task({
     //     title: ,
     //     description: ,
     //     date: ""
     // });
-    const { title, description , state, date} = req.body;
-    const task = await Task.findById(req.params.id);
-    // const task = await Task.findByIdAndUpdate(req.params.id, newTask);
-    console.log(task);
+    //también se podría estructurar, pero si no envío el Id acá se rompería.
+    try {
+        const id = req.params.id;
+        const { title, description , ...otrosDatos} = req.body;
 
-    return res.json({
-        msg: ''
-    })
+        if(!id || !description || !title){
+            return res.status(400).json({
+                        msg: 'No task id'
+            });
+        };
+
+        const updatedTask = await findByIdAndUpdate(id, { title, description})
+
+
+        const task = await Task.findById(req.params.taskId);
+        // const task = await Task.findByIdAndUpdate(req.params.id, newTask);
+        console.log(task);
+
+        return res.json({
+            msg: 'The task has been updated'
+        })
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).json({
+            msg: 'Internal Server Error'
+        })
+    }
+
 };
 
 // Controlador para eliminar usuario, requiere ID de usuario.

@@ -2,7 +2,8 @@
 
 const {Schema, model} = require('mongoose');
 
-const productSchema = new Schema({
+const productSchema = new Schema(
+    {
     commercialName: {
         type: String,
         required: true,
@@ -25,11 +26,11 @@ const productSchema = new Schema({
         type: Date,
         default: Date.now
     }
-},
-{
-    versionKey: false,
-    timestamps: true
-},
+    },
+    {
+        versionKey: false,
+        timestamps: true
+    },
 );
 
 module.exports = model('Product', productSchema);

@@ -18,11 +18,11 @@ router.get('/task', getTask);
 router.post('/task', postTask);
 
 // Editar usuario, requiere ID de usuario
-router.put('/task/:id', putTask);
+router.put('/task/:taskId', putTask);
 
 
 // Eliminar usuario, requiere ID de usuario
-router.delete('/task', deleteTask);
+router.delete('/task/:taskId', deleteTask);
 
 
 
