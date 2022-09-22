@@ -8,7 +8,7 @@ ctrlProduct.getProduct = async (req, res) => {
     try {
 
         const product = await Product.find();
-        return product.json(product);
+        return res.json(product);
         
     } catch (error) {
         console.log('Error al obtener productos', err);
@@ -41,7 +41,7 @@ ctrlProduct.postProduct = async (req, res) => {
         
         return res.status(500).json({
             msg: 'No se pudo crear el producto 👾, vuelva a intentarlo'
-        })
+        });
     }
 };
 
