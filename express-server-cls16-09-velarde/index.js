@@ -1,12 +1,15 @@
 
 //*Importación de librerías:
 const express = require('express');
-// const path = require('path');
+// const path = require('path');//El mpodulo path e encarga de normalizar rutas. Porque en W y en Lnx la 
+//sintaxis de las rutas es diferente.
 const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
+
+//*ROUTES
 const home = require('./src/routes/home.routes');
 const user = require('./src/routes/user.routes');
 const task = require('./src/routes/task.routes');

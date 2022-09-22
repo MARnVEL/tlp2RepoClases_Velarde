@@ -1,6 +1,8 @@
 
 // El método Router() de Express nos permite crear rutas
 const router = require('express').Router();
+// const express = require('express');
+// const router = express.Router();
 
 
 //*Importando controladores

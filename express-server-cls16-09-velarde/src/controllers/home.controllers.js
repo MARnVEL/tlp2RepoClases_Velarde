@@ -3,7 +3,8 @@
 //Un controlador es lo que hace es manejar la lógica... ¿ESTÁTICA?
 //los controladores (funciones que contendrán la lógica del endpoint)
 //En la carpeta controladaor no importa la biblioteca express.
-
+//LOS CONTROLADORES DAN LA FUNCIONALIDAD QUE SE DEBE EJECUTAR CUANDO UN USUARIO O CLIENTE SE CONECTA A LA
+//RUTA QUE MANEJA EL CONTROLADOR.
 const ctrlHome = {};
 
 // Se añade la propiedad getHome que es una función que recibe dos parámetros
