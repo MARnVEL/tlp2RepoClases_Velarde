@@ -5,7 +5,7 @@
 
 const ctrlTask = {}; // a este obj le agrego métodos (propiedades para definir funciones).
 
-//Requiero modelo de datos del usuario
+//Requiero modelo de datos del usuario. Con este modelo puedo instanciar objetos. El modelo es como un ESQUEMA COMPILADO.
 const Task = require('../models/Task');
 
 
@@ -13,7 +13,7 @@ const Task = require('../models/Task');
 ctrlTask.getTask = async (req, res) => {
     try {
         // Se consultan todos los documentos de la base de datos.
-        const task = await Task.find({isActive: true});
+        const task = await Task.find({active: true});
         // !Se devuelve al cliente !UN ARREGLO con los datos de los usuarios.
         return res.json(task)
 
@@ -73,17 +73,18 @@ ctrlTask.putTask = async (req, res) => {
     //     date: ""
     // });
     //también se podría estructurar, pero si no envío el Id acá se rompería.
+    const id = req.params.taskId;
+
+    const { title, description , ...otrosDatos} = req.body;
+
+    if(!id || !description || !title){
+        return res.status(400).json({
+            msg: 'No task id on the request body'
+        });
+    };
+
     try {
-        const id = req.params.id;
-        const { title, description , ...otrosDatos} = req.body;
-
-        if(!id || !description || !title){
-            return res.status(400).json({
-                        msg: 'No task id'
-            });
-        };
-
-        const updatedTask = await findByIdAndUpdate(id, { title, description})
+        const updatedTask = await Task.findByIdAndUpdate(id, { title, description})
 
 
         const task = await Task.findById(req.params.taskId);
@@ -91,12 +92,12 @@ ctrlTask.putTask = async (req, res) => {
         console.log(task);
 
         return res.json({
-            msg: 'The task has been updated'
+            msg: 'The task has been updated successfully.'
         })
     } catch (error) {
         console.log(error.message);
         return res.status(500).json({
-            msg: 'Internal Server Error'
+            msg: 'Error updating task!'
         })
     }
 
@@ -104,9 +105,30 @@ ctrlTask.putTask = async (req, res) => {
 
 // Controlador para eliminar usuario, requiere ID de usuario.
 ctrlTask.deleteTask = async (req, res) => {
-    return res.json({
-        msg: ''
-    })
+
+    const id = req.params.taskId;
+
+    try {
+        // const theTask = await Task.findByIdAndUpdate(id, { active : false });
+        const theTask = await Task.findById(id);
+        const theDeletedTask = await theTask.updateOne({ active : false })
+        console.log(theTask);
+        // console.log(theTask);
+        // await theTask.updateOne(id, { active : false });
+        // await theTask.save();
+        return res.json({
+            msg: 'Task has been deleted',
+            msg2: `The task with the title '${theTask.title}' has been deleted successfully`
+        }).end();
+        
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).json({
+            msg : 'Internal Server Error'
+        });
+
+    }
+
 };
 
 module.exports = ctrlTask;
