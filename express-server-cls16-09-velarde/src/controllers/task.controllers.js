@@ -8,7 +8,7 @@ const ctrlTask = {}; // a este obj le agrego métodos (propiedades para definir 
 //Requiero modelo de datos del usuario. Con este modelo puedo instanciar objetos. El modelo es como un ESQUEMA COMPILADO.
 const Task = require('../models/Task');
 
-
+//************************************************************************************************ */
 // Controlador para obtener las tareas de la Base de Datos.
 ctrlTask.getTask = async (req, res) => {
     try {
@@ -22,6 +22,7 @@ ctrlTask.getTask = async (req, res) => {
     }
 }
 
+//************************************************************************************************ */
 
 // Controlador para crear nuevo usuario en la Base de Datos.
 ctrlTask.postTask = async (req, res) => {
@@ -58,6 +59,8 @@ ctrlTask.postTask = async (req, res) => {
         })
     }
 };
+
+//************************************************************************************************ */
 
 // Controlador para actualizar un usuario, requiere que se envíe ID  de usuario.
 ctrlTask.putTask = async (req, res) => {
@@ -103,6 +106,8 @@ ctrlTask.putTask = async (req, res) => {
 
 };
 
+//************************************************************************************************ */
+
 // Controlador para eliminar usuario, requiere ID de usuario.
 ctrlTask.deleteTask = async (req, res) => {
 
@@ -130,6 +135,8 @@ ctrlTask.deleteTask = async (req, res) => {
     }
 
 };
+
+//************************************************************************************************ */
 
 module.exports = ctrlTask;
 

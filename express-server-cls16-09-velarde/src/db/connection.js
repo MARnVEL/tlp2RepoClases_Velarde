@@ -1,7 +1,6 @@
 
 const mongoose = require('mongoose');
 
-const password = 'BilblueMU3'
 const conectarBD = async () => {
 
     const { 
@@ -10,11 +9,15 @@ const conectarBD = async () => {
         TEST_APP_PASSWORD,
         TEST_APP_MONGODB_HOST2 } = process.env;
 
+    
+    // const MONGODB_URI = `mongodb://${TEST_APP_MONGODB_HOST}:27017/${TEST_APP_MONGODB_DATABASE}`; //!Esta línea es para hacer la conexión a una BD local de mongo, en el compass, por ejemplo.
+
+    const MONGODB_URI_ATLAS = `mongodb+srv://${TEST_APP_MONGODB_HOST2}:${TEST_APP_PASSWORD}@clusterbd-tlp2-ipf-vela.2locxu9.mongodb.net/${TEST_APP_MONGODB_DATABASE}?retryWrites=true&w=majority`;
 
 
     try {
-        // mongoose.connect(process.env.MONGODB_URI);
-        mongoose.connect(`mongodb+srv://Martin2:${password}@clusterbd-tlp2-ipf-vela.2locxu9.mongodb.net/prueba_nodeCls16-09?retryWrites=true&w=majority`);
+        // mongoose.connect(MONGODB_URI);
+        mongoose.connect(MONGODB_URI_ATLAS);
         console.log('Conected to the database');
     } catch (error) {
         console.log('Error al conectar la Base de Datos');

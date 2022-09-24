@@ -46,6 +46,9 @@ const taskSchema =  new Schema({
 //Las clases son como plantillas para darle forma a los datos.
 //Para dejar conformado el esquema se importa el model.
 
-module.exports = model('Task', taskSchema);//Model necesita dos parámetros, como se llama la conexión, 
+module.exports = model('Task', taskSchema);
+//Model necesita dos parámetros, como se llama la colección, 
 //y como se estructuran los datos.
+//!Los modelos son esquemas compilados. Tenemos un esquema por cada entidad de nuestro proyecto!!
+//!Las collecciones en el mongo se crean con el plural del nombre que le pongo acá al modelo. Es decir, la colección de tareas será: "tasks"
 

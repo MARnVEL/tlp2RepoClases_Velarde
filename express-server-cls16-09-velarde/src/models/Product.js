@@ -35,3 +35,4 @@ const productSchema = new Schema(
 
 module.exports = model('Product', productSchema);
 //!Los modelos son esquemas compilados. Tenemos un esquema por cada entidad de nuestro proyecto!!
+//!Las collecciones en el mongo se crean con el plural del nombre que le pongo acá al modelo. Es decir, la colección de productos será: "products"
