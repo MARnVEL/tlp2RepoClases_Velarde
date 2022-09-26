@@ -5,6 +5,7 @@ const ctrlProduct = {};
 const Product = require('../models/Product');
 
 ctrlProduct.getProduct = async (req, res) => {
+    
     try {
 
         const product = await Product.find();
@@ -31,13 +32,13 @@ ctrlProduct.postProduct = async (req, res) => {
 
         const product = await newProduct.save();
         return res.json({
-            msg: 'Producto cargado correctamente 🐱‍👤!',
+            msg: 'Product saved successfully 🚀!',
             product
         });
 
 
     } catch (error) {
-        console.log('No se pudo crear el producto 💔. Vuelve a intentarlo porfa! ', error);
+        console.log('Error trying to create product 😿! ', error);
         
         return res.status(500).json({
             msg: 'No se pudo crear el producto 👾, vuelva a intentarlo'
@@ -46,31 +47,46 @@ ctrlProduct.postProduct = async (req, res) => {
 };
 
 ctrlProduct.putProduct = async (req, res) => {
-    // const newTask = new Task({
-    //     title: ,
-    //     description: ,
-    //     date: ""
-    // });
-    const { commercialName,
-        description,
-        price,
-        quantity,
-        inputDate} = req.body;
-    const product = await Product.findById(req.params.id);
-    // const task = await Task.findByIdAndUpdate(req.params.id, newTask);
-    console.log(product);
 
-    return res.json({
-        msg: ''
-    })
+    try {
+        
+        const product = await Product.findById(req.params.id);
+
+        console.log('The products is: ', product);
+
+        return res.json({
+            msg : 'Product updated successfully 🌟',
+            product
+        });
+        
+    } catch (error) {
+        console.log('Error trying to UPDATE the product 😿', error);
+        return res.status(500).json({
+            msg: 'No se pudo ACTUALIZAR el producto 👾, vuelva a intentarlo'
+        });
+    }
+    
 };
 
 
-// Controlador para eliminar usuario, requiere ID de usuario.
+
 ctrlProduct.deleteProduct = async (req, res) => {
-    return res.json({
-        msg: ''
-    })
+    try {
+
+        const product = await Product.find();
+        console.log('The products are: ', product);
+
+        console.log('Product deleted successfully');
+
+        return res.json({
+            msg: 'Product deleted successfully'
+        })
+    } catch (error) {
+        console.log('Error trying to DELETE the product 😿', error);
+        return res.status(500).json({
+            msg: 'No se pudo ELIMINAR el producto 👾, vuelva a intentarlo'
+        });
+    };
 };
 
 module.exports = ctrlProduct;

@@ -1,13 +1,8 @@
 
 //*Importación de librerías:
 const express = require('express');
-// const path = require('path');//El mpodulo path e encarga de normalizar rutas. Porque en W y en Lnx la 
-//sintaxis de las rutas es diferente.
-/**
- * El cors (Cross O)
- * Los servidores saben si pueden permitir el acceso o no a cierta
- * Desde un dominio diferente al servidor, no se pueda hacer peticiones al
- */
+// const path = require('path');
+
 const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
@@ -20,13 +15,16 @@ const user = require('./src/routes/user.routes');
 const task = require('./src/routes/task.routes');
 const product = require('./src/routes/product.routes');
 
+//*Importo la función para la Conexión a la BD
 const conectarBD = require('./src/db/connection');
 
-dotenv.config();//Configuro la librería dotenv.
+//*Configuraciones
+dotenv.config();
+const port = process.env.PORT || 3000;
 
+const app = express();
 
-const app = express();//Inicializo la librería express
-conectarBD();//Ejecuto la conección a la Base de datos.
+conectarBD();
 
 
 //*MIDDLEWARES
@@ -44,8 +42,7 @@ app.use(task);
 app.use(product);
 
 
-//*Configuraciones
-const port = process.env.PORT || 3000;
+
 
 
 //*Inicializo el servidor!

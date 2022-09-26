@@ -1,30 +1,22 @@
 
-//Un controlador es lo que hace es manejar la lógica... ¿ESTÁTICA?
-//los controladores (funciones que contendrán la lógica del endpoint)
-//En la carpeta controladaor no importa la biblioteca express.
 
-const ctrlTask = {}; // a este obj le agrego métodos (propiedades para definir funciones).
-
-//Requiero modelo de datos del usuario. Con este modelo puedo instanciar objetos. El modelo es como un ESQUEMA COMPILADO.
+const ctrlTask = {}; 
 const Task = require('../models/Task');
 
 //************************************************************************************************ */
 // Controlador para obtener las tareas de la Base de Datos.
 ctrlTask.getTask = async (req, res) => {
     try {
-        // Se consultan todos los documentos de la base de datos.
         const task = await Task.find({active: true});
-        // !Se devuelve al cliente !UN ARREGLO con los datos de los usuarios.
         return res.json(task)
 
     } catch (err) {
         console.log('Error al obtener tareas', err);
     }
-}
+};
 
 //************************************************************************************************ */
 
-// Controlador para crear nuevo usuario en la Base de Datos.
 ctrlTask.postTask = async (req, res) => {
     //Cada vez que quiero ingresar documento a la BD voy al controlador.
     // Se obtienen los datos enviados por método POST
