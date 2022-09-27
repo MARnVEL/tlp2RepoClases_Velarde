@@ -79,12 +79,12 @@ ctrlTask.putTask = async (req, res) => {
     };
 
     try {
-        const updatedTask = await Task.findByIdAndUpdate(id, { title, description})
+        await Task.findByIdAndUpdate(id, { title, description})
 
 
         const task = await Task.findById(req.params.taskId);
         // const task = await Task.findByIdAndUpdate(req.params.id, newTask);
-        console.log(task);
+        // console.log(task);
 
         return res.json({
             msg: 'The task has been updated successfully.'
@@ -109,6 +109,7 @@ ctrlTask.deleteTask = async (req, res) => {
         // const theTask = await Task.findByIdAndUpdate(id, { active : false });
         const theTask = await Task.findById(id);
         const theDeletedTask = await theTask.updateOne({ active : false })
+        // await theTask.delete()//!No usar!!
         console.log(theTask);
         // console.log(theTask);
         // await theTask.updateOne(id, { active : false });
