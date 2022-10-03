@@ -11,10 +11,10 @@ const {
 
 // Defino rutas
 
-// Ruta para obtener todos los usuarios
+// Ruta para obtener todoas las tareas
 router.get('/task', getTask);
 
-// Crear nuevo usuario
+// Crear nueva tarea
 router.post('/task', postTask);
 
 // Editar usuario, requiere ID de usuario
