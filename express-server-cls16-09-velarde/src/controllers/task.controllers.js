@@ -86,9 +86,11 @@ ctrlTask.putTask = async (req, res) => {
         // const task = await Task.findByIdAndUpdate(req.params.id, newTask);
         // console.log(task);
 
-        return res.json({
-            msg: 'The task has been updated successfully.'
-        })
+        return res.json(
+            {
+                msg: 'The task has been updated successfully.'
+            }
+        )
     } catch (error) {
         console.log(error.message);
         return res.status(500).json({
