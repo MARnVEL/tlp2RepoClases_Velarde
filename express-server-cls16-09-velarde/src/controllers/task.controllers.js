@@ -18,16 +18,12 @@ ctrlTask.getTask = async (req, res) => {
 //************************************************************************************************ */
 
 ctrlTask.postTask = async (req, res) => {
-    //Cada vez que quiero ingresar documento a la BD voy al controlador.
+
     // Se obtienen los datos enviados por método POST
     const { title, description, date } = req.body;
 
-    // const { username, password, email, ...otrosDatos } = req.body;
-    //!El ...otrosDatos es para incluir posibles otros datos
-
     try {
         
-        // Se instancia un nuevo documento de MongoDB para luego ser guardado
         const newTask = new Task({
             title,
             description,
@@ -36,8 +32,7 @@ ctrlTask.postTask = async (req, res) => {
     
         // Se almacena en la base de datos con método asícrono .save()
         const task = await newTask.save();
-        
-        // Se devuelve una respuesta al cliente con un mensaje y los datos del usuario creado.
+
         return res.json({
             msg: 'Tarea creada correctamente!',
             task: task //acá podría usar la notación de JS para obviar la clave y dejar sólo task.
@@ -57,17 +52,6 @@ ctrlTask.postTask = async (req, res) => {
 // Controlador para actualizar un usuario, requiere que se envíe ID  de usuario.
 ctrlTask.putTask = async (req, res) => {
 
-    /*
-    Cuando quiero editar tengo que pensar primero qué tengo que editar.
-    No todos los datos se pueden editar.
-
-    */
-    // const newTask = new Task({
-    //     title: ,
-    //     description: ,
-    //     date: ""
-    // });
-    //también se podría estructurar, pero si no envío el Id acá se rompería.
     const id = req.params.taskId;
 
     const { title, description , ...otrosDatos} = req.body;
