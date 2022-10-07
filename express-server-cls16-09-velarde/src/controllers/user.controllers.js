@@ -1,13 +1,11 @@
 
-//Un controlador es lo que hace es manejar la lógica... ¿ESTÁTICA?
-//los controladores (funciones que contendrán la lógica del endpoint)
-//En la carpeta controladaor no importa la biblioteca express.
-
 const ctrlUser = {}; // a este obj le agrego métodos (propiedades para definir funciones).
 
 //Requiero modelo de datos del usuario
 const User = require('../models/User');
 
+
+//********************************************************************************************************
 // Controlador para obtener todos los usuarios ACTIVOS de la Base de Datos.
 ctrlUser.getUser = async (req, res) => {
     try {
@@ -21,15 +19,13 @@ ctrlUser.getUser = async (req, res) => {
     }
 }
 
-
+//********************************************************************************************************
 // Controlador para crear nuevo usuario en la Base de Datos.
+
 ctrlUser.postUser = async (req, res) => {
-    //Cada vez que quiero ingresar documento a la BD voy al controlador.
+    //Cada vez que quiero ingresar un documento a la BD voy al controlador.
     // Se obtienen los datos enviados por método POST
     const { username, password, email } = req.body;
-
-    // const { username, password, email, ...otrosDatos } = req.body;
-    //!El ...otrosDatos es para incluir posibles otros datos
 
     // Se instancia un nuevo documento de MongoDB para luego ser guardado
     try {
@@ -58,12 +54,16 @@ ctrlUser.postUser = async (req, res) => {
     }
 };
 
+//********************************************************************************************************
+
 // Controlador para actualizar un usuario, requiere que se envíe ID  de usuario.
 ctrlUser.putUser = async (req, res) => {
     return res.json({
         msg: ''
     })
 };
+
+//********************************************************************************************************
 
 // Controlador para eliminar usuario, requiere ID de usuario.
 ctrlUser.deleteUser = async (req, res) => {

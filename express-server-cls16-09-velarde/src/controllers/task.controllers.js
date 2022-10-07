@@ -8,7 +8,7 @@ const Task = require('../models/Task');
 ctrlTask.getTask = async (req, res) => {
     try {
         const task = await Task.find({active: true});
-        return res.json(task)
+        return res.json(task).end();
 
     } catch (err) {
         console.log('Error al obtener tareas', err);
@@ -36,7 +36,7 @@ ctrlTask.postTask = async (req, res) => {
         return res.json({
             msg: 'Tarea creada correctamente!',
             task: task //acá podría usar la notación de JS para obviar la clave y dejar sólo task.
-        });
+        }).end();
 
     } catch (error) {
         console.log('No se pudo crear la tarea 💔. Vuelve a intentarlo porfa! ', error);
@@ -74,7 +74,7 @@ ctrlTask.putTask = async (req, res) => {
             {
                 msg: 'The task has been updated successfully.'
             }
-        )
+        ).end()
     } catch (error) {
         console.log(error.message);
         return res.status(500).json({
