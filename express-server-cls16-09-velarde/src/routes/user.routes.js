@@ -6,7 +6,8 @@ const {
     getUser,
     postUser,
     putUser,
-    deleteUser } = require('../controllers/user.controllers');
+    deleteUser
+} = require('../controllers/user.controllers');
 
 // Defino rutas
 

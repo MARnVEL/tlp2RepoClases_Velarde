@@ -7,7 +7,8 @@ const {
     getTask,
     postTask,
     putTask,
-    deleteTask } = require('../controllers/task.controllers');
+    deleteTask 
+} = require('../controllers/task.controllers');
 
 // Defino rutas
 
