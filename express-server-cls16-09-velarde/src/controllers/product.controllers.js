@@ -69,7 +69,6 @@ ctrlProduct.putProduct = async (req, res) => {
 };
 
 
-
 ctrlProduct.deleteProduct = async (req, res) => {
     try {
 

@@ -49,7 +49,7 @@ ctrlTask.postTask = async (req, res) => {
 
 //************************************************************************************************ */
 
-// Controlador para actualizar un usuario, requiere que se envíe ID  de usuario.
+// Controlador para ACTUALIZAR una tarea, requiere que se envíe ID de tarea.
 ctrlTask.putTask = async (req, res) => {
 
     const id = req.params.taskId;
